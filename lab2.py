@@ -1,6 +1,10 @@
 import curses
 
 text = """Hello world!
+Hello world!
+Hello world!
+Hello world!
+Hello world!
 This is a tiny text editor.
 Edit me!"""
 
@@ -61,16 +65,28 @@ def main(screen):
 
         elif key == curses.KEY_UP:
 
-            # lines = text.split("\n")
-
-
-            display = ...
+            lines = display.split("\n")
+            count = 0
+            for i, line in enumerate(lines):
+                count += len(line)
+                count += 2
+                if (cursor < count):
+                    if (i >= 1):
+                        cursor -= (len(lines[i-1])) + 1 
+                    break
 
         elif key == curses.KEY_DOWN:
 
-            ...
-
-            display = ...
+            lines = display.split("\n")
+            count = 0
+            for i, line in enumerate(lines):
+                count += len(line)
+                count += 2
+                if (cursor < count):
+                    if (i < len(lines)-1):
+                        
+                        cursor += (len(lines[i+1])) + 1
+                    break
         
         display = text[:cursor] + "|" + text[cursor:]
 
